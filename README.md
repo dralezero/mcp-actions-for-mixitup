@@ -32,6 +32,8 @@ elgato_mcp_start.bat
 elgato_mcp_stop.bat  
 mcpgetsessionid_piped.bat  
 
+For each *.bat, Right-Click Properties > Security > Unblock
+
 Files included in release or found here:  
 https://github.com/dralezero/scripts-for-elgato-mcp/tree/main/scripts
 
