@@ -21,6 +21,17 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
 
 More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/
 
+## Folder setup
+
+### Create folder that MIU will read and write files  
+Example folder name: elgatomcp
+
+### Place files into folder  
+
+elgato_mcp_start.bat  
+elgato_mcp_stop.bat  
+mcpgetsessionid_piped.bat  
+
 ## Mix It Up setup
 
 ### 1.  New Action Group:
@@ -28,10 +39,9 @@ Name: Elgato MCP File Path
 Command Group: Elgato MCP  
 Import: "Elgato MCP File Path.miucommand"
 
-Edit value of Special Identifier "elgatomcpfilepath" to path where MixItUp Elgato MCP files are  
+Edit value of Special Identifier "elgatomcpfilepath" to folder path of *.bat files  
 No backslash \ at the end  
-Example: C:\Users\username\STREAM\MixItUp\elgatomcp  
-(This folder has elgato_mcp_start.bat, mcpgetsessionid_piped.bat, etc)  
+Example: C:\Users\username\streaming\elgatomcp  
 
 ### 2. New Action Group:  
 Name: Elgato MCP Server Start  
