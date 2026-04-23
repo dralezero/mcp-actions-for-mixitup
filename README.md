@@ -175,3 +175,9 @@ BUTTONTITLE:ACTIONID
 
 This can be manually run to get fresh list of buttons  
 while editing Stream Deck MCP Actions with MIU open and Elgato MCP server running.  
+
+## Disclaimer
+
+This is an unofficial community project. I am not affiliated with 
+Mix It Up or Elgato or any of their products. All product names, logos, 
+and brands are property of their respective owners.
