@@ -13,11 +13,11 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
      install-nodejs-elgatomcp.bat  
      Right-Click Properties > Security > Unblock  
      Right-Click Run As Administrator  
-     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat
+     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat  
 
 >   Manual Install:  
      Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
-     Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md
+     Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md  
 
 More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/
 
@@ -31,6 +31,9 @@ Example folder name: elgatomcp
 elgato_mcp_start.bat  
 elgato_mcp_stop.bat  
 mcpgetsessionid_piped.bat  
+
+Files included in release or found here:  
+https://github.com/dralezero/scripts-for-elgato-mcp/tree/main/scripts
 
 ## Mix It Up setup
 
