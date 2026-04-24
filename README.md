@@ -39,8 +39,9 @@ https://github.com/dralezero/scripts-for-elgato-mcp/tree/main/scripts
 
 ## Mix It Up setup
 
-### 1.  New Action Group:
-Name: Elgato MCP File Path  
+### Create Action Groups
+
+### 1.  Name: Elgato MCP File Path   
 Command Group: Elgato MCP  
 Import: "Elgato MCP File Path.miucommand"
 
@@ -48,8 +49,7 @@ Edit value of Special Identifier "elgatomcpfilepath" to folder path of *.bat fil
 No backslash \ at the end  
 Example: C:\Users\username\streaming\elgatomcp  
 
-### 2. New Action Group:  
-Name: Elgato MCP Server Start  
+### 2. Name: Elgato MCP Server Start  
 Command Group: Elgato MCP  
 Import: "Elgato MCP Server Start.miucommand"  
 
@@ -60,26 +60,22 @@ Closing the window will also stop the server
 
 Optional preference to not show window but then Stop command must be used.  
 
-### 3. New Action Group:  
-Name: Elgato MCP Server Stop  
+### 3. Name: Elgato MCP Server Stop  
 Command Group: Elgato MCP  
 Import: Elgato MCP Server Stop.miucommand  
 
 Show Window option is enabled so server can be seen stopped  
 Optional preference to not show window  
 
-### 4. New Action Group:  
-Name: Elgato MCP Get Session ID  
+### 4. Name: Elgato MCP Get Session ID  
 Command Group: Elgato MCP  
 Import: "Elgato MCP Get Session ID.miucommand"  
 
-### 5. New Action Group:  
-Name: Elgato MCP Get Actions  
+### 5. Name: Elgato MCP Get Actions  
 Command Group: Elgato MCP  
 Import: "Elgato MCP Get Actions.miucommand"  
 
-### 6. New Action Group:  
-Name: Elgato MCP Auto Start  
+### 6. Name: Elgato MCP Auto Start  
 Command Group: Elgato MCP  
 Import: "Elgato MCP Auto Start.miucommand"  
 
@@ -96,7 +92,7 @@ Command: Elgato MCP Get Session ID
 
 Command: Elgato MCP Get Actions  
 
-### 5. Auto start / stop MCP:  
+### 5. Auto start / stop MCP server:  
 	
 Channel > Events > Generic  
 Application Launch:  
