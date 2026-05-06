@@ -13,10 +13,10 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
      install-nodejs-elgatomcp.bat  
      Right-Click Properties > Security > Unblock  
      Right-Click Run As Administrator  
-     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat
+     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat  
      ⚠️ Script sets PowerShell script execution policy to RemoteSigned. 
-	 Scripts need to be allowed to install and run Elgato MCP server.
-	 AllSigned also works. Use Manual Install to skip this change.
+	 Scripts need to be allowed to install and run Elgato MCP server.  
+	 AllSigned also works. Use Manual Install to skip this change.  
 
 >   Manual Install:  
      Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
