@@ -1,5 +1,5 @@
-# MCP Actions for Mix It Up v1.0.1
-
+# MCP Actions vX.X.X for Mix It Up 
+NEEDS MAJOR UPDATED FOR THE REBUILD
 Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
 
 ## Setup MCP Server
