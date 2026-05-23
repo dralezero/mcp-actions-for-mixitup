@@ -1,107 +1,81 @@
-# MCP Actions vX.X.X for Mix It Up 
-NEEDS MAJOR UPDATED FOR THE REBUILD
+# MCP Actions v2.0.0 for Mix It Up 
+NEEDS MAJOR UPDATED FOR THE REBUILD LOOK FOR "NEEDUPDATE"
+MAYBE TALK ABOUT UNZIPPING AND CHECKING FOLDERS INSTEAD OF CREATING FOLDERS
 Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
 
 ## Setup MCP Server
 
 ### Install Elgato Stream Deck 7.4.0+  
-   Settings > General > Enable MCP Actions
+   Settings > General > Enable MCP Actions  
+   Option won't be availabe unless physical Stream Deck or paid mobile app has been connected  
 
 ### Setup Elgato MCP Server
 
 >   Automatic Install:  
      install-nodejs-elgatomcp.bat  
-     Right-Click Properties > Security > Unblock  
+     Right-Click Properties > Security > Unblock (NEEDUPDATE if option not there, that's good)  
      Right-Click Run As Administrator  
-     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat  
 
 >   Manual Install:  
-     Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
+     NEEDUPDATE Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
      Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md  
 
 More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/
 
 ## Folder setup
 
-### Create folder that MIU will read and write files  
+### NEEDUPDATE Create folder that MIU will read and write files  
+(folder already exist in zip release downlaoded)
 Example folder name: elgatomcp
 
-### Place files into folder  
+### NEEDUPDATE Place files into folder  
+(files already exist in extracted zip folder)
 
 elgato_mcp_start.bat  
 elgato_mcp_stop.bat  
-mcpgetsessionid_piped.bat  
 
-For each *.bat, Right-Click Properties > Security > Unblock
-
-Files included in release or found here:  
-https://github.com/dralezero/scripts-for-elgato-mcp/tree/main/scripts
+For each *.bat, Right-Click Properties > Security > Unblock (NEEDUPDATE if option not there, that's good)
 
 ## Mix It Up setup
 
 ### Create Action Groups
 
-### 1.  Name: Elgato MCP File Path   
+### 1.  Name: Elgato MCP Controller  
 Command Group: Elgato MCP  
-Import: "Elgato MCP File Path.miucommand"
+Import: "Elgato MCP Controller.miucommand"
 
+Expand "Config: Folder Path"  
 Edit value of Special Identifier "elgatomcpfilepath" to folder path of *.bat files  
 No backslash \ at the end  
 Example: C:\Users\username\streaming\elgatomcp  
 
-### 2. Name: Elgato MCP Server Start  
+Expand "Config: MCP URL"  
+Default value of Special Identifier "elgatomcpurl" is: localhost:9090  
+This is default URL to Elgato MCP Server  
+Do not add http:// at beginning  
+Do not add /mcp at the end  
+
+Expand "Config: Error messages to chat: ON/OFF"  
+Type ON or OFF  
+
+Expand "Config: Debug file: ON/OFF"  
+Type ON of OFF  
+If ON, the values of Special Identifiers are saved in $elgatomcpfilepath\debug_specialidentifiers.txt  
+
+### 2. Name: Elgato MCP Stop  
 Command Group: Elgato MCP  
-Import: "Elgato MCP Server Start.miucommand"  
+Import: "Elgato MCP Stop.miucommand"  
 
-Show Window option is enabled so server can be seen as running or stopped.  
-Running message: "Starting Elgato MCP server..."  
-Stopped by Stop command message: "Press any key to continue..."  
-Closing the window will also stop the server  
-
-Optional preference to not show window but then Stop command must be used.  
-
-### 3. Name: Elgato MCP Server Stop  
-Command Group: Elgato MCP  
-Import: Elgato MCP Server Stop.miucommand  
-
-Show Window option is enabled so server can be seen stopped  
-Optional preference to not show window  
-
-### 4. Name: Elgato MCP Get Session ID  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Get Session ID.miucommand"  
-
-### 5. Name: Elgato MCP Get Actions  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Get Actions.miucommand"  
-
-### 6. Name: Elgato MCP Auto Start  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Auto Start.miucommand"  
-
-Auto Start will have 4 empty commands  
-Edit them in this order  
-
-For each Command Type: Action Group  
-
-Command: Elgato MCP File Path  
-
-Command: Elgato MCP Server Start  
-
-Command: Elgato MCP Get Session ID  
-
-Command: Elgato MCP Get Actions  
-
-### 5. Auto start / stop MCP server:  
+### 3. Setup Auto Start / Stop with MIU launch  
 	
 Channel > Events > Generic  
 Application Launch:  
 Command Type: Action Group  
-Command: Elgato MCP Auto Start  
+Command: Elgato MCP Controller  
 
 Application Exit:  
 Command Type: Action Group  
-Command: Elgato MCP Server Stop  
+Command: Elgato MCP Stop  
 
 ## Create Stream Deck actions and trigger them with Mix It Up
 
@@ -117,60 +91,21 @@ TITLE_LIKE_THIS is a safe option for title
 ### MixItUp:
 New Action Group:  
 
-Name: Whatever you like	in reference to the Stream Deck MCP Action button  
+Name: Title of Stream Deck action  
 Command Group: Elgato MCP Actions  
-Import: "Elgato MCP Action Template.miucommand"  
-Edit Special Identifer actiontitle value: BUTTON_TITLE_HERE  
-Match the MCP Action title exactly (copy paste title from Stream Deck)  
+Action: Command  
+Command Type: Action Group  
+Command: Elgato MCP Controller  
+Command Argument: Title of Stream Deck action  
+- It is best to match the MCP Action title exactly (copy paste title from Stream Deck)
+  
 Save  
 
 Test Command  
 
-Reference the action group in MIU to "press" the Stream Deck button in response to commands, events, etc.  
+Reference the Stream Deck button's action group in MIU to trigger the Stream Deck button in response to commands, events, etc.  
 
-## Action Groups explained
-
-### Elgato MCP Auto Start:  
-
-Runs commands in order:  
-	
-1. Elgato MCP File Path  
-2. Elgato MCP Server Start  
-3. Elgato MCP Get Session ID  
-4. Elgato MCP Get Actions  
-
-### Elgato MCP File Path:  
-
-Sets global $elgatomcpfilepath for file path of MCP files  
-	
-### Elgato MCP Server Start:  
-
-Runs elgato_mcp_start.bat in the $elgatomcpfilepath  
-	
-### Elgato MCP Server Stop:  
-
-Runs elgato_mcp_stop.bat in the $elgatomcpfilepath  
-The bat looks for processes listening on port 9090 and runs taskkill on the process  
-
-### Elgato MCP Get Session ID:  
-	
-Runs mcpgetsessionid_piped.bat in the $elgatomcpfilepath  
-Piped has a one line batch command and returns the session ID  
-If pipe doesn't work use mcpgetsessionid_file.bat this will write the HTTP response headers to a file "headers.txt"  
-in path the where the bat ran ($elgatomcpfilepath) and then reads the headers.txt file to return session ID.  
-MCP session ID is stored in global $elgatomcpsessionid  
-
-### Elgato MCP Get Actions:  
-
-Using $elgatomcpsessionid, sends HTTP request to get JSON of buttons from Stream Deck MCP Actions profile  
-Saves the JSON in mcpactions_json.txt in the $elgatomcpfilepath  
-C# script reads and parses the JSON and saves into mcpactions_list.txt  
-the list of MCP Actions formatted as  
-BUTTONTITLE:ACTIONID  
-(technically it walks through it as a string because System.Text.Json wasn't found in MIU)  
-
-This can be manually run to get fresh list of buttons  
-while editing Stream Deck MCP Actions with MIU open and Elgato MCP server running.  
+NEEDUPDATE EXPLAIN WHAT THE CONTROLLER AND OTHER COMMANDS DO
 
 ## Disclaimer
 
