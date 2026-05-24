@@ -11,6 +11,8 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
 
 ### Setup Elgato MCP Server
 
+Close Mix It Up before installing
+
 >   Automatic Install:  
      install-nodejs-elgatomcp.bat
      (Might need to unblock)  
