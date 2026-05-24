@@ -1,16 +1,16 @@
 @echo off
 echo ================================
-echo  Downloading Node.js v24.15.0...
+echo  Downloading Node.js v24.16.0...
 echo ================================
 
-curl -L -o "%TEMP%\node-v24.15.0-x64.msi" "https://nodejs.org/dist/v24.15.0/node-v24.15.0-x64.msi"
+curl -L -o "%TEMP%\nodejsinstaller.msi" "https://nodejs.org/dist/v24.16.0/node-v24.16.0-x64.msi"
 
 echo.
 echo ================================
 echo  Installing Node.js...
 echo ================================
 
-msiexec /i "%TEMP%\node-v24.15.0-x64.msi" /qn /norestart
+msiexec /i "%TEMP%\nodejsinstaller.msi" /qn /norestart
 
 echo.
 echo  Waiting for installation to complete...
