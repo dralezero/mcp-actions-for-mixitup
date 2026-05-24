@@ -1,107 +1,92 @@
-# MCP Actions for Mix It Up v1.0.1
+# MIU MCP Actions v2.0.0  
 
-Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
+Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile  
 
-## Setup MCP Server
+## Setup MCP Server  
 
 ### Install Elgato Stream Deck 7.4.0+  
-   Settings > General > Enable MCP Actions
+   Settings > General > Enable MCP Actions  
+   Option won't be availabe unless physical Stream Deck or paid mobile app has been connected  
 
-### Setup Elgato MCP Server
+### Setup Elgato MCP Server  
+
+Close Mix It Up before installing.  
+Otherwise Mix it Up will need to be restarted after install.
 
 >   Automatic Install:  
-     install-nodejs-elgatomcp.bat  
-     Right-Click Properties > Security > Unblock  
+     install-nodejs-elgatomcp.bat
+     (Might need to unblock)  
+	 Right-Click Properties > Security > Unblock  
+	 Install:  
      Right-Click Run As Administrator  
-     Source: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/scripts/install-nodejs-elgatomcp.bat  
 
->   Manual Install:  
+>   Manual Elgato MCP Server Install:  
      Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
      Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md  
 
-More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/
+Optional learning: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/  
 
-## Folder setup
+## Mix It Up Setup  
 
-### Create folder that MIU will read and write files  
-Example folder name: elgatomcp
+### 1. Import Elgato MCP Controller
 
-### Place files into folder  
-
-elgato_mcp_start.bat  
-elgato_mcp_stop.bat  
-mcpgetsessionid_piped.bat  
-
-For each *.bat, Right-Click Properties > Security > Unblock
-
-Files included in release or found here:  
-https://github.com/dralezero/scripts-for-elgato-mcp/tree/main/scripts
-
-## Mix It Up setup
-
-### Create Action Groups
-
-### 1.  Name: Elgato MCP File Path   
+Create Action Group  
+Name: Elgato MCP Controller  
 Command Group: Elgato MCP  
-Import: "Elgato MCP File Path.miucommand"
+Import: "Elgato MCP Controller.miucommand"
 
-Edit value of Special Identifier "elgatomcpfilepath" to folder path of *.bat files  
+### 2. Configuration (Optional)  
+
+Action Group: Elgato MCP Controller  
+
+Expand "CONFIGURATION"  
+
+"Config: Folder Path"  
+A folder "MixItUpElgatoMCP" is created in $elgatomcpmiubasepath  
+for stop/start batch files and JSON of MCP Actions  
+The folder and files are created automatically  
+Default value: %LOCALAPPDATA%  
+example: C:\Users\drale\AppData\Local\MixItUpElgatoMCP  
+
+Edit value of Special Identifier "elgatomcpmiubasepath"  
 No backslash \ at the end  
-Example: C:\Users\username\streaming\elgatomcp  
+Example: C:\Users\username\streaming  
+Results in folder created here
+C:\Users\username\streaming\MixItUpElgatoMCP  
 
-### 2. Name: Elgato MCP Server Start  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Server Start.miucommand"  
+"Config: MCP URL"  
+Default value of Special Identifier "elgatomcpurl": localhost:9090  
+This is default URL to Elgato MCP Server  
+Do not add http:// at beginning  
+Do not add /mcp at the end  
 
-Show Window option is enabled so server can be seen as running or stopped.  
-Running message: "Starting Elgato MCP server..."  
-Stopped by Stop command message: "Press any key to continue..."  
-Closing the window will also stop the server  
+"Config: Error messages to chat: ON/OFF"  
+Value: ON or OFF  
+Default: OFF  
 
-Optional preference to not show window but then Stop command must be used.  
+"Config: Debug file: ON/OFF"  
+Value: ON of OFF  
+Default: OFF  
+If ON, the values of Special Identifiers used in "Elgato MCP Controller"  
+are saved in $elgatomcpmiubasepath\MixItUpElgatoMCP\debug_specialidentifiers.txt  
 
-### 3. Name: Elgato MCP Server Stop  
-Command Group: Elgato MCP  
-Import: Elgato MCP Server Stop.miucommand  
-
-Show Window option is enabled so server can be seen stopped  
-Optional preference to not show window  
-
-### 4. Name: Elgato MCP Get Session ID  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Get Session ID.miucommand"  
-
-### 5. Name: Elgato MCP Get Actions  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Get Actions.miucommand"  
-
-### 6. Name: Elgato MCP Auto Start  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Auto Start.miucommand"  
-
-Auto Start will have 4 empty commands  
-Edit them in this order  
-
-For each Command Type: Action Group  
-
-Command: Elgato MCP File Path  
-
-Command: Elgato MCP Server Start  
-
-Command: Elgato MCP Get Session ID  
-
-Command: Elgato MCP Get Actions  
-
-### 5. Auto start / stop MCP server:  
+### 2. Auto Start / Stop with MIU launch  
 	
 Channel > Events > Generic  
 Application Launch:  
+Action: Command  
+Type: Run Command  
 Command Type: Action Group  
-Command: Elgato MCP Auto Start  
+Command: Elgato MCP Controller  
+Save  
 
 Application Exit:  
+Action: Command  
+Type: Run Command  
 Command Type: Action Group  
-Command: Elgato MCP Server Stop  
+Command: Elgato MCP Controller  
+Command Arguments: elgatomcpstop  
+Save  
 
 ## Create Stream Deck actions and trigger them with Mix It Up
 
@@ -112,65 +97,31 @@ Give it a title unique from all other MCP Action buttons
 Spaces between letters are accepted  
 Casing doesn't matter  
 The title is not seen on your stream deck  
-TITLE_LIKE_THIS is a safe option for title  
+No special characters or quotes  
 
 ### MixItUp:
 New Action Group:  
 
-Name: Whatever you like	in reference to the Stream Deck MCP Action button  
+Name: Title of Stream Deck action  
 Command Group: Elgato MCP Actions  
-Import: "Elgato MCP Action Template.miucommand"  
-Edit Special Identifer actiontitle value: BUTTON_TITLE_HERE  
-Match the MCP Action title exactly (copy paste title from Stream Deck)  
+Action: Command  
+Command Type: Action Group  
+Command: Elgato MCP Controller  
+Command Argument: Title of Stream Deck action  
+- It is best to match the MCP Action title exactly (copy paste title from Stream Deck)
+  
 Save  
 
-Test Command  
+Test the action.  
 
-Reference the action group in MIU to "press" the Stream Deck button in response to commands, events, etc.  
+Reference the action group in response to commands, events, redeems, etc.  
 
-## Action Groups explained
+## MIU MCP Actions v2.0.0 Tested on
 
-### Elgato MCP Auto Start:  
-
-Runs commands in order:  
-	
-1. Elgato MCP File Path  
-2. Elgato MCP Server Start  
-3. Elgato MCP Get Session ID  
-4. Elgato MCP Get Actions  
-
-### Elgato MCP File Path:  
-
-Sets global $elgatomcpfilepath for file path of MCP files  
-	
-### Elgato MCP Server Start:  
-
-Runs elgato_mcp_start.bat in the $elgatomcpfilepath  
-	
-### Elgato MCP Server Stop:  
-
-Runs elgato_mcp_stop.bat in the $elgatomcpfilepath  
-The bat looks for processes listening on port 9090 and runs taskkill on the process  
-
-### Elgato MCP Get Session ID:  
-	
-Runs mcpgetsessionid_piped.bat in the $elgatomcpfilepath  
-Piped has a one line batch command and returns the session ID  
-If pipe doesn't work use mcpgetsessionid_file.bat this will write the HTTP response headers to a file "headers.txt"  
-in path the where the bat ran ($elgatomcpfilepath) and then reads the headers.txt file to return session ID.  
-MCP session ID is stored in global $elgatomcpsessionid  
-
-### Elgato MCP Get Actions:  
-
-Using $elgatomcpsessionid, sends HTTP request to get JSON of buttons from Stream Deck MCP Actions profile  
-Saves the JSON in mcpactions_json.txt in the $elgatomcpfilepath  
-C# script reads and parses the JSON and saves into mcpactions_list.txt  
-the list of MCP Actions formatted as  
-BUTTONTITLE:ACTIONID  
-(technically it walks through it as a string because System.Text.Json wasn't found in MIU)  
-
-This can be manually run to get fresh list of buttons  
-while editing Stream Deck MCP Actions with MIU open and Elgato MCP server running.  
+Tested versions:  
+MixItUp 1.6.500 and 1.7.000  
+Stream Deck 7.4.1 and 7.4.2  
+Node.js 24.15.0 and 24.16.0  
 
 ## Disclaimer
 
