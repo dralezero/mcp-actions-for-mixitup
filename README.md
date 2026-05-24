@@ -43,8 +43,8 @@ Expand "CONFIGURATION"
 A folder "MixItUpElgatoMCP" is created in $elgatomcpmiubasepath  
 for stop/start batch files and JSON of MCP Actions  
 The folder and files are created automatically  
-Default value: %appdata%  
-example: C:\Users\drale\AppData\Roaming\MixItUpElgatoMCP  
+Default value: %LOCALAPPDATA%  
+example: C:\Users\drale\AppData\Local\MixItUpElgatoMCP  
 
 Edit value of Special Identifier "elgatomcpmiubasepath"  
 No backslash \ at the end  
