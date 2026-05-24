@@ -1,5 +1,5 @@
-Version 2.0.0  
-May 24, 2026  
+# Version 2.0.0  
+## May 24, 2026  
 
 Tested on   
 MixItUp 1.6.500 and 1.7.000  
@@ -47,8 +47,8 @@ Then, will retry once more to trigger the button.
 - error check: mcp action id not found in stream deck (web request successful but known ID in S.I. action list no longer inside Stream Deck)  
 
 
-Version 1.0.1  
-May 11, 2026  
+# Version 1.0.1  
+## May 11, 2026  
 
 Tested on  
 Mix It Up v.1.6.500  
