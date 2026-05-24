@@ -1,15 +1,14 @@
-# MCP Actions v2.0.0 for Mix It Up 
-NEEDS MAJOR UPDATED FOR THE REBUILD LOOK FOR "NEEDUPDATE"
-MAYBE TALK ABOUT UNZIPPING AND CHECKING FOLDERS INSTEAD OF CREATING FOLDERS
-Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
+# MIU MCP Actions v2.0.0  
 
-## Setup MCP Server
+Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile  
+
+## Setup MCP Server  
 
 ### Install Elgato Stream Deck 7.4.0+  
    Settings > General > Enable MCP Actions  
    Option won't be availabe unless physical Stream Deck or paid mobile app has been connected  
 
-### Setup Elgato MCP Server
+### Setup Elgato MCP Server  
 
 Close Mix It Up before installing.  
 Otherwise Mix it Up will need to be restarted after install.
@@ -116,6 +115,13 @@ Save
 Test the action.  
 
 Reference the action group in response to commands, events, redeems, etc.  
+
+## MIU MCP Actions v2.0.0 Tested on
+
+Tested versions:  
+MixItUp 1.6.500 and 1.7.000  
+Stream Deck 7.4.1 and 7.4.2  
+Node.js 24.15.0 and 24.16.0  
 
 ## Disclaimer
 
