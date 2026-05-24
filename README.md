@@ -22,62 +22,69 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
      Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
      Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md  
 
-More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/  
+Optional learning: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/  
 
-## Folder setup
+## Mix It Up Setup  
 
-### NEEDUPDATE Create folder that MIU will read and write files  
-(folder already exist in zip release downlaoded)
-Example folder name: elgatomcp
+### 1. Import Elgato MCP Controller
 
-### NEEDUPDATE Place files into folder  
-(files already exist in extracted zip folder)
-
-elgato_mcp_start.bat  
-elgato_mcp_stop.bat  
-
-For each *.bat, Right-Click Properties > Security > Unblock (NEEDUPDATE if option not there, that's good)
-
-## Mix It Up setup
-
-### Create Action Groups
-
-### 1.  Name: Elgato MCP Controller  
+Create Action Group  
+Name: Elgato MCP Controller  
 Command Group: Elgato MCP  
 Import: "Elgato MCP Controller.miucommand"
 
-Expand "Config: Folder Path"  
-Edit value of Special Identifier "elgatomcpfilepath" to folder path of *.bat files  
-No backslash \ at the end  
-Example: C:\Users\username\streaming\elgatomcp  
+### 2. Configuration (Optional)  
 
-Expand "Config: MCP URL"  
-Default value of Special Identifier "elgatomcpurl" is: localhost:9090  
+Action Group: Elgato MCP Controller  
+
+Expand "CONFIGURATION"  
+
+"Config: Folder Path"  
+A folder "MixItUpElgatoMCP" is created in $elgatomcpmiubasepath  
+for stop/start batch files and JSON of MCP Actions  
+The folder and files are created automatically  
+Default value: %appdata%  
+example: C:\Users\drale\AppData\Roaming\MixItUpElgatoMCP  
+
+Edit value of Special Identifier "elgatomcpmiubasepath"  
+No backslash \ at the end  
+Example: C:\Users\username\streaming  
+Results in folder created here
+C:\Users\username\streaming\MixItUpElgatoMCP  
+
+"Config: MCP URL"  
+Default value of Special Identifier "elgatomcpurl": localhost:9090  
 This is default URL to Elgato MCP Server  
 Do not add http:// at beginning  
 Do not add /mcp at the end  
 
-Expand "Config: Error messages to chat: ON/OFF"  
-Type ON or OFF  
+"Config: Error messages to chat: ON/OFF"  
+Value: ON or OFF  
+Default: OFF  
 
-Expand "Config: Debug file: ON/OFF"  
-Type ON of OFF  
-If ON, the values of Special Identifiers are saved in $elgatomcpfilepath\debug_specialidentifiers.txt  
+"Config: Debug file: ON/OFF"  
+Value: ON of OFF  
+Default: OFF  
+If ON, the values of Special Identifiers used in "Elgato MCP Controller"  
+are saved in $elgatomcpmiubasepath\MixItUpElgatoMCP\debug_specialidentifiers.txt  
 
-### 2. Name: Elgato MCP Stop  
-Command Group: Elgato MCP  
-Import: "Elgato MCP Stop.miucommand"  
-
-### 3. Setup Auto Start / Stop with MIU launch  
+### 2. Auto Start / Stop with MIU launch  
 	
 Channel > Events > Generic  
 Application Launch:  
+Action: Command  
+Type: Run Command  
 Command Type: Action Group  
 Command: Elgato MCP Controller  
+Save  
 
 Application Exit:  
+Action: Command  
+Type: Run Command  
 Command Type: Action Group  
-Command: Elgato MCP Stop  
+Command: Elgato MCP Controller  
+Command Arguments: elgatomcpstop  
+Save  
 
 ## Create Stream Deck actions and trigger them with Mix It Up
 
@@ -88,7 +95,7 @@ Give it a title unique from all other MCP Action buttons
 Spaces between letters are accepted  
 Casing doesn't matter  
 The title is not seen on your stream deck  
-TITLE_LIKE_THIS is a safe option for title  
+No special characters or quotes  
 
 ### MixItUp:
 New Action Group:  
@@ -103,11 +110,9 @@ Command Argument: Title of Stream Deck action
   
 Save  
 
-Test Command  
+Test the action.  
 
-Reference the Stream Deck button's action group in MIU to trigger the Stream Deck button in response to commands, events, etc.  
-
-NEEDUPDATE EXPLAIN WHAT THE CONTROLLER AND OTHER COMMANDS DO
+Reference the action group in response to commands, events, redeems, etc.  
 
 ## Disclaimer
 
