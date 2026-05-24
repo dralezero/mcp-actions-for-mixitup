@@ -12,15 +12,17 @@ Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile
 ### Setup Elgato MCP Server
 
 >   Automatic Install:  
-     install-nodejs-elgatomcp.bat  
-     Right-Click Properties > Security > Unblock (NEEDUPDATE if option not there, that's good)  
+     install-nodejs-elgatomcp.bat
+     (Might need to unblock)  
+	 Right-Click Properties > Security > Unblock  
+	 Install:  
      Right-Click Run As Administrator  
 
->   Manual Install:  
-     NEEDUPDATE Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
+>   Manual Elgato MCP Server Install:  
+     Tutorial Video tutorial: https://www.youtube.com/watch?v=6fAbno8UpZU  
      Writen steps: https://github.com/dralezero/scripts-for-elgato-mcp/blob/main/README.md  
 
-More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/
+More info: https://www.elgato.com/ww/en/explorer/products/stream-deck/sd-mcp-setup/  
 
 ## Folder setup
 
