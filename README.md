@@ -1,6 +1,6 @@
 # MIU MCP Actions v2.0.0  
 
-Commands for Mix It Up to trigger buttons in Stream Deck MCP Actions profile  
+Action Group for Mix It Up to trigger buttons in Stream Deck MCP Actions profile  
 
 ## Setup MCP Server  
 
